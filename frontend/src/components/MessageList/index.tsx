@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import io from 'socket.io-client';
+
 import styles from './styles.module.scss';
 
 import { api } from '../../services/api';
@@ -17,13 +19,37 @@ interface Message {
   user: User;
 }
 
+const messagesQueue: Message[] = [];
+const THREE_SECONDS = 3 * 1000;
+
+const socket = io('http://localhost:3333');
+
+socket.on('new_message', (newMessage: Message) => {
+  messagesQueue.push(newMessage);
+});
+
 export function MessageList() {
 
-  const [messages, setMessage] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (messagesQueue.length > 0) {
+        setMessages(lastMessages => {
+          return [
+            messagesQueue[0],
+            lastMessages[0],
+            lastMessages[1],
+          ].filter(Boolean);
+        });
+        messagesQueue.shift();
+      }
+    }, THREE_SECONDS);
+  }, []);
 
   useEffect(() => {
     api.get<Message[]>('messages/last-three/').then(res => {
-      setMessage(res.data);
+      setMessages(res.data);
     })
   }, []);
 
