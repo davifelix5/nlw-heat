@@ -8,11 +8,16 @@ import { VscSignOut, VscGithubInverted } from 'react-icons/vsc';
 
 import { api } from '../../services/api';
 
+import { FeedbackMessage } from '../FeedbackMessage';
+
+const TWO_SECONDS = 2 * 1000;
+
 export function SendMessageForm() {
   
   const { user, signOut } = useContext(AuthContext);
   
   const [message, setMessage] = useState('');
+  const [feedbackMessage, setFeedbackMessage] = useState('');
   
   async function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -20,10 +25,16 @@ export function SendMessageForm() {
       return;
     }
     await api.post('messages/', { message });
+    setFeedbackMessage('Mensagem enviada com sucesso!')
     setMessage('');
+    setTimeout(() => {
+      setFeedbackMessage('');
+    }, TWO_SECONDS);
   }
 
   return (
+    <>
+    {!!feedbackMessage && <FeedbackMessage message={feedbackMessage} />}
     <div className={styles.sendMessageFormWrapper}>
       <button onClick={signOut} className={styles.signOutButton}>
         <VscSignOut size={32} />
@@ -53,5 +64,6 @@ export function SendMessageForm() {
         <button type="submit">Enviar mensagem</button>
       </form>
     </div>
+    </>
   );
 }

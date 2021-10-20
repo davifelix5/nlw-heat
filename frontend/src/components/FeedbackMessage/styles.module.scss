@@ -1,0 +1,21 @@
+.messageWrapper {
+  background: #1b873f;
+  width: 300px;
+  height: 60px;
+  padding: 16px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  
+  z-index: 2;
+  
+  p {
+    font-size: 16px;
+    color: #fff;
+  }
+}

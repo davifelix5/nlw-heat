@@ -7,6 +7,7 @@ import { AuthContext } from './contexts/authContext';
 import { LoginBox } from './components/LoginBox';
 import { MessageList } from './components/MessageList';
 import { SendMessageForm } from './components/SendMessageForm';
+import { FeedbackMessage } from './components/FeedbackMessage';
 
 export function App() {
   const { user } = useContext(AuthContext);
