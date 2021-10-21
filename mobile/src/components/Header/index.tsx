@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { styles } from './styles';
-import { UserPhoto } from '../../components/UserPhoto';
+import { UserPhoto } from '../UserPhoto';
 
 export function Header(){
   return (
