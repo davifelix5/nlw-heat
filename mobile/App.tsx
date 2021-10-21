@@ -11,6 +11,7 @@ import {
 import { StatusBar } from 'expo-status-bar';
 
 import { Home } from './src/screens/Home';
+import { AuthContextProvider } from './src/hooks/auth';
 
 export default function App() {
   const [fonstLoaded] = useFonts({
@@ -23,9 +24,9 @@ export default function App() {
   }
 
   return (
-    <>
-      <StatusBar style="light" />
+    <AuthContextProvider>
+      <StatusBar style="light" translucent backgroundColor="transparent" />
       <Home />
-    </>
+    </AuthContextProvider>
   );
 }
