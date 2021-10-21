@@ -45,6 +45,7 @@ export function MessageList() {
         messagesQueue.shift();
       }
     }, THREE_SECONDS);
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
