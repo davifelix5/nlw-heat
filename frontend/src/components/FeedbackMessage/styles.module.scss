@@ -1,5 +1,4 @@
 .messageWrapper {
-  background: #1b873f;
   width: 300px;
   height: 60px;
   padding: 16px 28px;
@@ -18,4 +17,12 @@
     font-size: 16px;
     color: #fff;
   }
+}
+
+.success {
+  background: #1b873f;
+}
+
+.error {
+  background: #c53d48;
 }

@@ -18,23 +18,34 @@ export function SendMessageForm() {
   
   const [message, setMessage] = useState('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [success, setSuccess] = useState<null | boolean>(null);
   
   async function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!message.trim()) {
       return;
     }
-    await api.post('messages/', { message });
-    setFeedbackMessage('Mensagem enviada com sucesso!')
-    setMessage('');
-    setTimeout(() => {
-      setFeedbackMessage('');
-    }, TWO_SECONDS);
+    try {
+      await api.post('messagess/', { message });
+      setFeedbackMessage('Mensagem enviada com sucesso!');
+      setSuccess(true);
+      setMessage('');
+    } catch (err) {
+      setFeedbackMessage('Erro ao enviar a mensagem');
+      setSuccess(false);
+    } finally {
+      setTimeout(() => {
+        setSuccess(null)
+        setFeedbackMessage('');
+      }, TWO_SECONDS);
+    }
   }
 
   return (
     <>
-    {!!feedbackMessage && <FeedbackMessage message={feedbackMessage} />}
+    {!!feedbackMessage && (
+      <FeedbackMessage message={feedbackMessage} success={success} />
+    )}
     <div className={styles.sendMessageFormWrapper}>
       <button onClick={signOut} className={styles.signOutButton}>
         <VscSignOut size={32} />
@@ -60,7 +71,6 @@ export function SendMessageForm() {
           id="message"
           placeholder="Qual sua expectativa para o evento?"
         />
-
         <button type="submit">Enviar mensagem</button>
       </form>
     </div>
