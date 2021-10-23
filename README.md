@@ -1,6 +1,6 @@
 # A aplicação
 
-### Esta aplicação foi desenvolvida durante a NLW-Heat, evento da [Rocketseat](https://www.rocketseat.com.br/) no qual foi desenvolvida uma aplicação completa que recebe mensagens e as exibe em tempo real.
+#### Esta aplicação foi desenvolvida durante a NLW-Heat, evento da [Rocketseat](https://www.rocketseat.com.br/) no qual foi desenvolvida uma aplicação completa que recebe mensagens e as exibe em tempo real.
 
 ## Backend
 
@@ -13,7 +13,7 @@
 
 
 ## Frontend
-
+  ![Imagem1](https://raw.githubusercontent.com/davifelix5/nlw-heat/main/assets/webpage1.png) ![Imagem2](https://raw.githubusercontent.com/davifelix5/nlw-heat/main/assets/webpage2.png)
 #### Tecnologias
   - [ReactJS](https://reactjs.org/), TypeScript, [Vite](https://vitejs.dev/), Socket.IO, Axios, Sass
   - Uso dos CSS modules, que permitem uma estilização mais compartimentalizada e facilita o desenvolvimento ao evitar conflitos entre direntes estilizações
@@ -24,6 +24,8 @@
   - Salva o token JWT no armazenamento do navegador, permitindo persistência
 
 ## Mobile
+
+![Imagem1](https://raw.githubusercontent.com/davifelix5/nlw-heat/main/assets/mobile1.png) ![Imagem2](https://raw.githubusercontent.com/davifelix5/nlw-heat/main/assets/mobile2.png)
 
 #### Tecnologias
   - [ReactNative](https://reactnative.dev/), [Expo](https://docs.expo.dev/), TypeScript, Axios, Socker.IO, AsyncStorage, [Moti](https://moti.fyi/)
